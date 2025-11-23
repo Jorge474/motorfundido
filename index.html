@@ -159,24 +159,19 @@
         <div class="counter" id="visit-counter-total">-</div>
     </div>
 
-    <!-- SCRIPT DEL CONTADOR (CountAPI) -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Cambia "termometromotor.jorgepazmino" por algo único si quieres
-            const namespace = "termometromotor.jorgepazmino";
-            const key = "visitas";
-
-            fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('visit-counter-total').textContent = data.value;
-                })
-                .catch(err => {
-                    console.error("Error contador:", err);
-                    document.getElementById('visit-counter-total').textContent = "?";
-                });
-        });
-    </script>
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('contador_visitas.php')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('visit-counter-total').textContent = data.value;
+            })
+            .catch(err => {
+                console.error("Error contador:", err);
+                document.getElementById('visit-counter-total').textContent = "?";
+            });
+    });
+</script>
 
     <!-- WHATSAPP -->
     <a class="whatsapp-floating"
