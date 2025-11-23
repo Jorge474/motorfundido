@@ -163,12 +163,28 @@
 
     <!-- CONTADOR POR VISITAS (CADA CARGA DE PÁGINA = +1 GLOBAL) -->
     <div class="visit-badge">
-        
-        <div class="counter">
-            <!-- CounterAPI se pinta aquí solo -->
-            <div class="counterapi"></div>
-        </div>
+    <div class="label">
+        👁 <span>Visitas totales:</span>
     </div>
+    <div class="counter">
+        <!-- SIN FONDO, SOLO NÚMERO -->
+        <div class="counterapi" bg="transparent"></div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    fetch("https://counterapi.com/api/motorfundido.com/visitas/hit")
+        .then(r => r.json())
+        .then(data => {
+            document.querySelector(".counterapi").textContent = data.count;
+        })
+        .catch(err => {
+            document.querySelector(".counterapi").textContent = "?";
+        });
+});
+</script>
+
 
     <!-- WHATSAPP -->
     <a class="whatsapp-floating"
@@ -179,4 +195,5 @@
 
 </body>
 </html>
+
 
