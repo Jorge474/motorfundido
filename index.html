@@ -63,13 +63,13 @@
             border-radius: 12px;
         }
 
-        /* VISITAS FLOTANTE */
+        /* VISITAS FLOTANTE (POR VISITAS, NO USUARIOS) */
         .visit-badge {
             position: fixed;
             left: 16px;
             bottom: 22px;
-            padding: 6px 12px;
-            background: rgba(15,23,42,0.9);
+            padding: 6px 14px;
+            background: rgba(15,23,42,0.95);
             border-radius: 999px;
             font-size: 0.8rem;
             color: #e5e7eb;
@@ -77,22 +77,25 @@
             box-shadow: 0 0 18px rgba(0,0,0,0.8);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             z-index: 900;
         }
 
-#sfcnprag882mb8u53j3ckase63pd1gutp79 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .visit-badge .label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-#sfcnprag882mb8u53j3ckase63pd1gutp79 img {
-    height: 26px;        /* tamaño perfecto */
-    margin-left: 8px;    /* espacio entre “Visitas:” y los números */
-    border-radius: 6px;  /* bordes suaves para verse más integrado */
-    filter: brightness(1.15);
-}
+        .visit-badge .counter {
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: #020617;
+            box-shadow: inset 0 0 6px rgba(15,23,42,0.8);
+            min-width: 42px;
+        }
 
         /* WHATSAPP FLOTANTE */
         .whatsapp-floating {
@@ -148,24 +151,32 @@
         </div>
     </section>
 
-    <!-- CONTADOR GLOBAL (OptiStats) DENTRO DE LA BURBUJA -->
+    <!-- CONTADOR POR VISITAS (CADA ENTRADA SUMA) -->
     <div class="visit-badge">
-        👁 Visitas:
-        <div id="sfcnprag882mb8u53j3ckase63pd1gutp79"></div>
+        <div class="label">
+            👁 <span>Visitas totales:</span>
+        </div>
+        <div class="counter" id="visit-counter-total">-</div>
     </div>
 
-    <!-- SCRIPT DEL CONTADOR -->
-    <script type="text/javascript" 
-            src="https://counter1.optistats.ovh/private/counter.js?c=nprag882mb8u53j3ckase63pd1gutp79&down=async" 
-            async>
-    </script>
+    <!-- SCRIPT DEL CONTADOR (CountAPI) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Cambia "termometromotor.jorgepazmino" por algo único si quieres
+            const namespace = "termometromotor.jorgepazmino";
+            const key = "visitas";
 
-    <noscript>
-        <a href="https://www.contadorvisitasgratis.com" title="contador de visitas html">
-            <img src="https://counter1.optistats.ovh/private/contadorvisitasgratis.php?c=nprag882mb8u53j3ckase63pd1gutp79" 
-                 border="0" alt="contador de visitas html">
-        </a>
-    </noscript>
+            fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('visit-counter-total').textContent = data.value;
+                })
+                .catch(err => {
+                    console.error("Error contador:", err);
+                    document.getElementById('visit-counter-total').textContent = "?";
+                });
+        });
+    </script>
 
     <!-- WHATSAPP -->
     <a class="whatsapp-floating"
@@ -176,5 +187,3 @@
 
 </body>
 </html>
-
-
