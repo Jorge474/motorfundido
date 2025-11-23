@@ -48,57 +48,20 @@
             width: 92%;
             max-width: 980px;
             margin: 0 auto 40px auto;
-            text-align: left;
+            text-align: center;
         }
 
-        .video-title {
-            color: #9ca3af;
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 600;
-        }
-
-        /* Contenedor del reproductor */
         .video-wrapper {
-            position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            overflow: hidden;
-            background: #000;
-            border-radius: 12px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            height: auto;
         }
 
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        iframe {
             width: 100%;
-            height: 100%;
+            height: 520px;
             border: none;
             border-radius: 12px;
         }
-
-        .video-caption-link {
-            text-align: center;
-            margin-top: 12px;
-        }
-
-        .video-caption-link a {
-            color: #e5e7eb;
-            font-size: 0.9rem;
-            text-decoration: none;
-            padding: 6px 14px;
-            border-radius: 999px;
-            background: #030712;
-            border: 1px solid #111827;
-            opacity: 0.9;
-        }
-
-        .video-caption-link a:hover { opacity: 1; }
 
         /* VISITAS FLOTANTE */
         .visit-badge {
@@ -156,7 +119,8 @@
 
         @media (max-width: 640px) {
             header h1 { font-size: 2.2rem; }
-            header h2 { font-size: 0.95rem; letter-spacing: 3px; }
+            header h2 { font-size: 1.1rem; }
+            iframe { height: 260px; }
         }
     </style>
 </head>
@@ -168,25 +132,14 @@
         <h2>PARA VEHÍCULOS 12 VOLTIOS</h2>
     </header>
 
-    <!-- VIDEO -->
+    <!-- VIDEO EMBEBIDO LIMPIO -->
     <section class="video-section">
-        <div class="video-title">Presentación del producto</div>
-
         <div class="video-wrapper">
-            <iframe
-                src="https://www.youtube.com/embed/QHDhlbj48iI?rel=0&modestbranding=1&controls=1"
-                title="Video Termómetro de Motor"
-                frameborder="0"
+            <iframe 
+                src="https://www.youtube.com/embed/QHDhlbj48iI?autoplay=0&controls=1&rel=0&modestbranding=1"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
             </iframe>
-        </div>
-
-        <div class="video-caption-link">
-            <a href="https://www.youtube.com/watch?v=QHDhlbj48iI"
-               target="_blank" rel="noopener noreferrer">
-               Ver video en YouTube
-            </a>
         </div>
     </section>
 
@@ -198,8 +151,8 @@
     <!-- WHATSAPP -->
     <a class="whatsapp-floating"
        href="https://wa.me/593996190493?text=Hola,%20necesito%20información%20del%20termómetro%20de%20motor."
-       target="_blank" rel="noopener noreferrer">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+       target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
     </a>
 
     <script>
@@ -213,5 +166,7 @@
 
 </body>
 </html>
+
+
 
 
